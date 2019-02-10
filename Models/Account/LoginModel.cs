@@ -1,12 +1,12 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
-namespace WebAdvert.Web.Models
+namespace WebAdvert.Web.Models.Account
 {
-    public class SignupModel
+    public class LoginModel
     {
         [Required]
         [EmailAddress]
@@ -18,9 +18,7 @@ namespace WebAdvert.Web.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Required]
-        [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Pass must match.")]
-        public string ConfirmPassword { get; set; }
+        [Display(Name = "Remember Me")]
+        public bool RememberMe { get; set; }
     }
 }

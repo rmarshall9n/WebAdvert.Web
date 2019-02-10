@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Login";
+}
+
+@model WebAdvert.Web.Models.Account.LoginModel
+
+<div class="row">
+    <div class="col-md-4">
+        <h4>Login</h4>
+        <p>If you are not a member, you can sign up <a asp-controller="AccountController" asp-action="Signup">here</a>.</p>
+        <hr>
+
+        <form method="post" asp-controller="AccountController" asp-action="Login">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email">Email</label>
+                <input type="email" class="form-control" asp-for="Email">
+                <div asp-validation-for="Email" class="text-danger"></div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password">Password</label>
+                <input type="password" class="form-control" asp-for="Password">
+                <div asp-validation-for="Password" class="text-danger"></div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label asp-for="RememberMe">Remember Me</label>
+                    <input type="checkbox">
+                </div>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+    </div>
+</div>
