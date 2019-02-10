@@ -31,7 +31,7 @@ namespace WebAdvert.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddCognitoIdentity();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -52,7 +52,7 @@ namespace WebAdvert.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
