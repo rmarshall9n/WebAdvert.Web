@@ -32,6 +32,11 @@ namespace WebAdvert.Web
             });
 
             services.AddCognitoIdentity();
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "account/login";
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

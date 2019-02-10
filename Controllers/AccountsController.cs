@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Amazon.Extensions.CognitoAuthentication;
 using Amazon.AspNetCore.Identity.Cognito;
-using WebAdvert.Web.Models;
+using WebAdvert.Web.Models.Account;
 
 namespace WebAdvert.Web.Controllers
 {
@@ -31,7 +31,6 @@ namespace WebAdvert.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Signup(SignupModel model)
         {
-            Console.WriteLine("test");
             if (ModelState.IsValid)
             {
                 var user = _pool.GetUser(model.Email);
@@ -91,6 +90,30 @@ namespace WebAdvert.Web.Controllers
                     {
                         ModelState.AddModelError(item.Code, item.Description);
                     }
+                }
+            }
+            return View(model);
+        }
+
+        public async Task<IActionResult> Login(LoginModel model)
+        {
+            return View(model);
+        }
+        [HttpPost]
+        [ActionName("Login")]
+        public async Task<IActionResult> LoginPost(LoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false).ConfigureAwait(false);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("Login Error", "Could not log in.");
                 }
             }
             return View(model);
