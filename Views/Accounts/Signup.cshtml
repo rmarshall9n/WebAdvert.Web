@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Signup Page";
+}
+@model WebAdvert.Web.Models.SignupModel;
+
+<div class="row">
+  <div class="col-md-6">
+    <form asp-action="Signup" asp-controller="AccountsController" method="post">
+      <h1>Create Account</h1>
+      <hr />
+      <div asp-validation-summary="All" class="text-danger"></div>
+      <div class="form-goup">
+        <label asp-for="Email">Email</label>
+        <input type="text" asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+      </div>
+
+      <div class="form-goup">
+        <label asp-for="Password">Password</label>
+        <input type="password" asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+      </div>
+
+      <div class="form-goup">
+        <label asp-for="ConfirmPassword">ConfirmPassword</label>
+        <input type="password" asp-for="ConfirmPassword" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-2">Create</button>
+    </form>
+  </div>
+</div>

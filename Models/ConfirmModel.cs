@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebAdvert.Web.Models
 {
-    public class SignupModel
+    public class ConfirmModel
     {
         [Required]
         [EmailAddress]
@@ -14,13 +14,6 @@ namespace WebAdvert.Web.Models
         public string Email { get; set; }
 
         [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        [Required]
-        [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Pass must match.")]
-        public string ConfirmPassword { get; set; }
+        public string Code { get; set; }
     }
 }

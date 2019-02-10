@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Confirm Page";
+}
+
+@model WebAdvert.Web.Models.ConfirmModel
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Confirm" asp-controller="AccountsConroller" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email">Email</label>
+                <input type="text" asp-for="Email" class="form-control">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Code">Code</label>
+                <input type="text" asp-for="Code" class="form-control">
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Confirm</button>
+        </form>
+    </div>
+</div>
