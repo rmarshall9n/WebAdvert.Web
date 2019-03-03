@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Forgot Password";
+}
+
+@model WebAdvert.Web.Models.Password.ForgotModel;
+
+<div class="row">
+    <div class="col-md-5">
+        <form method="post" asp-controller="Password" asp-action="Forgot">
+            <p>Please enter your email for us to send further instructions to.</p>
+            <div class="text-danger" asp-validation-summary="All"></div>
+            <div class="form-group">
+                <label asp-for="Email">Email</label>
+                <input type="email" asp-for="Email" class="form-control">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <button class="btn btn-primary" type="submit">Reset Password</button>
+        </form>
+    </div>
+</div>
